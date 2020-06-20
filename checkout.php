@@ -225,10 +225,10 @@ span.price {
 
 					<table class='table table-condensed'>
 					<thead><tr>
-					<th >no</th>
-					<th >Tiêu đề sản phẩm</th>
-					<th >	qty	</th>
-					<th >	Số lượng</th></tr>
+					<th >STT</th>
+					<th >Mặt hàng</th>
+					<th >Số lượng</th>
+					<th >Giá </th></tr>
 					</thead>
 					<tbody>
 					";
@@ -249,7 +249,7 @@ span.price {
 					
 						echo "	
 
-						<tr><td><p>$item_number_</p></td><td><p>$item_name_</p></td><td ><p>$quantity_</p></td><td ><p>$amount_</p></td></tr>";
+						<tr><td><p>$item_number_</p></td><td><p>$item_name_</p></td><td ><p>$quantity_</p></td><td ><p>$amount_ VND</p></td></tr>";
 						
 						$i++;
 					}
@@ -260,7 +260,7 @@ span.price {
 				</table>
 				<hr>
 				
-				<h3>Tổng<span class='price' style='color:black'><b>$$total</b></span></h3>";
+				<h3>Tổng: <span class='price' style='color:black'><b>$total VND</b></span></h3>";
 					
 				}
 				?>

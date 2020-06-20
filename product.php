@@ -20,13 +20,12 @@ include "header.php";
     var _hash = "!";
     var noBackPlease = function () {
         global.location.href += "#";
-		// making sure we have the fruit available for juice....
-		// 50 milliseconds for just once do not cost much (^__^)
+		
         global.setTimeout(function () {
             global.location.href += "!";
         }, 50);
     };	
-	// Earlier we had setInerval here....
+	
     global.onhashchange = function () {
         if (global.location.hash !== _hash) {
             global.location.hash = _hash;
@@ -34,26 +33,26 @@ include "header.php";
     };
     global.onload = function () {        
 		noBackPlease();
-		// disables backspace on page except on input fields and textarea..
+	
 		document.body.onkeydown = function (e) {
             var elm = e.target.nodeName.toLowerCase();
             if (e.which === 8 && (elm !== 'input' && elm  !== 'textarea')) {
                 e.preventDefault();
             }
-            // stopping event bubbling up the DOM tree..
+           
             e.stopPropagation();
         };		
     };
 })(window);
 </script>
 
-		<!-- SECTION -->
+		
 		<div class="section main main-raised">
-			<!-- container -->
+		
 			<div class="container">
-				<!-- row -->
+	
 				<div class="row">
-					<!-- Product main img -->
+				<!--Hiển thị mỗi sản phẩm bao gồm cách ảnh và "thêm vào giỏ"-->
 					
 					<?php 
 								include 'db.php';
@@ -76,19 +75,19 @@ include "header.php";
                                 <div class="col-md-5 col-md-push-2">
                                 <div id="product-main-img">
                                     <div class="product-preview">
-                                        <img src="product_images/'.$row['product_image'].'" alt="">
+                                        <img src="'.$row['product_link'].'" alt="">
                                     </div>
 
                                     <div class="product-preview">
-                                        <img src="product_images/'.$row['product_image'].'" alt="">
+                                          <img src="'.$row['product_link'].'" alt="">
                                     </div>
 
                                     <div class="product-preview">
-                                        <img src="product_images/'.$row['product_image'].'" alt="">
+                                         <img src="'.$row['product_link'].'" alt="">
                                     </div>
 
                                     <div class="product-preview">
-                                        <img src="product_images/'.$row['product_image'].'" alt="">
+                                          <img src="'.$row['product_link'].'" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -96,19 +95,19 @@ include "header.php";
                                 <div class="col-md-2  col-md-pull-5">
                                 <div id="product-imgs">
                                     <div class="product-preview">
-                                        <img src="product_images/'.$row['product_image'].'" alt="">
+                                         <img src="'.$row['product_link'].'" alt="">
                                     </div>
 
                                     <div class="product-preview">
-                                        <img src="product_images/'.$row['product_image'].'" alt="">
+                                          <img src="'.$row['product_link'].'" alt="">
                                     </div>
 
                                     <div class="product-preview">
-                                        <img src="product_images/'.$row['product_image'].'g" alt="">
+                                         <img src="'.$row['product_link'].'" alt="">
                                     </div>
 
                                     <div class="product-preview">
-                                        <img src="product_images/'.$row['product_image'].'" alt="">
+                                          <img src="'.$row['product_link'].'" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -117,16 +116,17 @@ include "header.php";
 									';
                                     
 									?>
-									<!-- FlexSlider -->
+									
 									
 									<?php 
 									echo '
 									
-                                    
+                             <!--Nhận xét và rating mặc định 5 sao-->       
                                    
                     <div class="col-md-5">
 						<div class="product-details">
 							<h2 class="product-name">'.$row['product_title'].'</h2>
+							<p>(Di chuột quamh ảnh để xem hình ảnh phóng to)</p>
 							<div>
 								<div class="product-rating">
 									<i class="fa fa-star"></i>
@@ -138,69 +138,25 @@ include "header.php";
 								
 							</div>
 							<div>
-								<h3 class="product-price">$'.$row['product_price'].'<del class="product-old-price">990.000 VND</del></h3>
-								<span class="product-available">Trong kho</span>
+								<h3 class="product-price">'.$row['product_price'].' VND<del class="product-old-price">'.($row['product_price']*1.3).' VND</del></h3>
+								
 							</div>
 						
 
-							<div class="product-options">
-								<label>
-									Size
-									<select class="input-select">
-										<option value="0">X</option>
-									</select>
-								</label>
-								<label>
-									Màu
-									<select class="input-select">
-										<option value="0">Đỏ</option>
-									</select>
-								</label>
-							</div>
-
 							<div class="add-to-cart">
-								<div class="qty-label">
-									Qty
-									<div class="input-number">
-										
-										<span class="qty-up">+</span>
-										<span class="qty-down">-</span>
-									</div>
-								</div>
+
 								<div class="btn-group" style="margin-left: 25px; margin-top: 15px">
 								<button class="add-to-cart-btn" pid="'.$row['product_id'].'"  id="product" ><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</button>
                                 </div>
 								
 								
 							</div>
-
-							
-
-							<ul class="product-links">
-								<li>Danh mục:</li>
-								<li><a href="#">Nam</a></li>
-								<li><a href="#">Nữ</a></li>
-							</ul>
-
 							
 
 						</div>
 					</div>
 									
-					
-					<!-- /Product main img -->
-
-					<!-- Product thumb imgs -->
-					
-					
-					
-					<!-- /Product thumb imgs -->
-
-					<!-- Product details -->
-					
-					<!-- /Product details -->
-
-					<!-- Product tab -->
+					<!--Nhận xét rating tự viết--> 
 					<div class="col-md-12">
 						<div id="product-tab">
 							<!-- product tab nav -->
@@ -307,8 +263,8 @@ include "header.php";
 												<ul class="reviews">
 													<li>
 														<div class="review-heading">
-															<h5 class="name">John</h5>
-															<p class="date">27.12.2018, 8:00 PM</p>
+															<h5 class="name">Thuy</h5>
+															<p class="date">13.10 2020, 8:00 PM</p>
 															<div class="review-rating">
 																<i class="fa fa-star"></i>
 																<i class="fa fa-star"></i>
@@ -321,8 +277,8 @@ include "header.php";
 													</li>
 													<li>
 														<div class="review-heading">
-															<h5 class="name">John</h5>
-															<p class="date">27 DEC 2018, 8:0 PM</p>
+															<h5 class="name">Thuy</h5>
+															<p class="date">13.10 2020, 8:00 PM</p>
 															<div class="review-rating">
 																<i class="fa fa-star"></i>
 																<i class="fa fa-star"></i>
@@ -405,7 +361,7 @@ include "header.php";
                     
 					<div class="col-md-12">
 						<div class="section-title text-center">
-							<h3 class="title">Related Products</h3>
+							<h3 class="title">Sản phẩm liên quan</h3>
 							
 						</div>
 					</div>
@@ -429,6 +385,7 @@ include "header.php";
                         $pro_title = $row['product_title'];
                         $pro_price = $row['product_price'];
                         $pro_image = $row['product_image'];
+                        $pro_link = $row['product_link'];
 
                         $cat_name = $row["cat_title"];
 
@@ -438,7 +395,7 @@ include "header.php";
                                 <div class='col-md-3 col-xs-6'>
 								<a href='product.php?p=$pro_id'><div class='product'>
 									<div class='product-img'>
-										<img src='product_images/$pro_image' style='max-height: 170px;' alt=''>
+										<img src='$pro_link' style='max-height: 170px;' alt=''>
 										<div class='product-label'>
 											<span class='sale'>-30%</span>
 											<span class='new'>MỚI</span>
@@ -447,7 +404,7 @@ include "header.php";
 									<div class='product-body'>
 										<p class='product-category'>$cat_name</p>
 										<h3 class='product-name header-cart-item-name'><a href='product.php?p=$pro_id'>$pro_title</a></h3>
-										<h4 class='product-price header-cart-item-info'>$pro_price<del class='product-old-price'>990.000 VND</del></h4>
+										<h4 class='product-price header-cart-item-info'>$pro_price  VND<del class='product-old-price'>".($pro_price*1.3)." VND</del></h4>
 										<div class='product-rating'>
 											<i class='fa fa-star'></i>
 											<i class='fa fa-star'></i>
@@ -458,7 +415,7 @@ include "header.php";
 										
 									</div>
 									<div class='add-to-cart'>
-										<button pid='$pro_id' id='product' class='add-to-cart-btn block2-btn-towishlist' href='#'><i class='fa fa-shopping-cart'></i> thêm vào giỏ</button>
+										<button pid='$pro_id' id='product' class='add-to-cart-btn block2-btn-towishlist' href='#'><i class='fa fa-shopping-cart'></i> Thêm vào giỏ</button>
 									</div>
 								</div>
                                 </div>
@@ -470,23 +427,14 @@ include "header.php";
       
 }
 ?>
-					<!-- product -->
-					
-					<!-- /product -->
 
 				</div>
-				<!-- /row -->
+				
                 
 			</div>
-			<!-- /container -->
+			
 		</div>
-		<!-- /Section -->
-
-		<!-- NEWSLETTER -->
 		
-		<!-- /NEWSLETTER -->
-
-		<!-- FOOTER -->
 <?php
 include "newslettter.php";
 include "footer.php";

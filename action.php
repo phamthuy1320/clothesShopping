@@ -1,3 +1,4 @@
+<!--Hiện thị sản phẩm trong bảng chọn chính-->
 <?php
 session_start();
 $ip_add = getenv("REMOTE_ADDR");
@@ -111,7 +112,7 @@ if(isset($_POST["getProduct"])){
 			$pro_title = $row['product_title'];
 			$pro_price = $row['product_price'];
 			$pro_image = $row['product_image'];
-            
+            $pro_link = $row['product_link'];
             $cat_name = $row["cat_title"];
 			echo "
 				
@@ -119,7 +120,7 @@ if(isset($_POST["getProduct"])){
                         <div class='col-md-4 col-xs-6' >
 								<a href='product.php?p=$pro_id'><div class='product'>
 									<div class='product-img'>
-										<img src='product_images/$pro_image' style='max-height: 170px;' alt=''>
+										<img src='$pro_link' style='max-height: 170px;' alt=''>
 										<div class='product-label'>
 											<span class='sale'>-30%</span>
 											<span class='new'>MỚI</span>
@@ -128,7 +129,7 @@ if(isset($_POST["getProduct"])){
 									<div class='product-body'>
 										<p class='product-category'>$cat_name</p>
 										<h3 class='product-name header-cart-item-name'><a href='product.php?p=$pro_id'>$pro_title</a></h3>
-										<h4 class='product-price header-cart-item-info'>$pro_price<del class='product-old-price'>990.000VND</del></h4>
+										<h4 class='product-price header-cart-item-info'>$pro_price VND<del class='product-old-price'>".($pro_price*1.3)." VND</del></h4>
 										<div class='product-rating'>
 											<i class='fa fa-star'></i>
 											<i class='fa fa-star'></i>
@@ -174,6 +175,7 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
 			$pro_title = $row['product_title'];
 			$pro_price = $row['product_price'];
 			$pro_image = $row['product_image'];
+			$pro_link = $row['product_link'];
             $cat_name = $row["cat_title"];
 			echo "
 					
@@ -181,16 +183,16 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
                         <div class='col-md-4 col-xs-6'>
 								<a href='product.php?p=$pro_id'><div class='product'>
 									<div class='product-img'>
-										<img  src='product_images/$pro_image'  style='max-height: 170px;' alt=''>
+										<img  src='$pro_link'  style='max-height: 170px;' alt=''>
 										<div class='product-label'>
 											<span class='sale'>-30%</span>
-											<span class='new'>NEW</span>
+											<span class='new'>MỚI</span>
 										</div>
 									</div></a>
 									<div class='product-body'>
 										<p class='product-category'>$cat_name</p>
 										<h3 class='product-name header-cart-item-name'><a href='product.php?p=$pro_id'>$pro_title</a></h3>
-										<h4 class='product-price header-cart-item-info'>$pro_price<del class='product-old-price'>990.000 VND</del></h4>
+										<h4 class='product-price header-cart-item-info'>$pro_price<del class='product-old-price'>".($pro_price*1.3)."VND</del></h4>
 										<div class='product-rating'>
 											<i class='fa fa-star'></i>
 											<i class='fa fa-star'></i>
@@ -228,7 +230,7 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
 			echo "
 				<div class='alert alert-warning'>
 						<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-						<b>Product is already added into the cart Continue Shopping..!</b>
+						<b>Sản phẩm đã thêm vào giỏ, Tiếp tục mua sắm..!</b>
 				</div>
 			";//not in video
 		} else {
@@ -239,7 +241,7 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
 				echo "
 					<div class='alert alert-success'>
 						<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-						<b>Product is Added..!</b>
+						<b>Sản phẩm đã được thêm..!</b>
 					</div>
 				";
 			}
@@ -251,7 +253,7 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
 				echo "
 					<div class='alert alert-warning'>
 							<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-							<b>Product is already added into the cart Continue Shopping..!</b>
+							<b>Sản phẩm đã thêm vào giỏ, Tiếp tục mua sắm..!</b>
 					</div>";
 					exit();
 			}
@@ -262,7 +264,7 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
 				echo "
 					<div class='alert alert-success'>
 						<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-						<b>Your product is Added Successfully..!</b>
+						<b>Sản phẩm của bạn đã được thêm thành công..!</b>
 					</div>
 				";
 				exit();
@@ -297,10 +299,10 @@ if (isset($_POST["Common"])) {
 
 	if (isset($_SESSION["uid"])) {
 		//When user is logged in this query will execute
-		$sql = "SELECT a.product_id,a.product_title,a.product_price,a.product_image,b.id,b.qty FROM products a,cart b WHERE a.product_id=b.p_id AND b.user_id='$_SESSION[uid]'";
+		$sql = "SELECT a.product_id,a.product_title,a.product_price,a.product_image,a.product_link,b.id,b.qty FROM products a,cart b WHERE a.product_id=b.p_id AND b.user_id='$_SESSION[uid]'";
 	}else{
 		//When user is not logged in this query will execute
-		$sql = "SELECT a.product_id,a.product_title,a.product_price,a.product_image,b.id,b.qty FROM products a,cart b WHERE a.product_id=b.p_id AND b.ip_add='$ip_add' AND b.user_id < 0";
+		$sql = "SELECT a.product_id,a.product_title,a.product_price,a.product_image,a.product_link,b.id,b.qty FROM products a,cart b WHERE a.product_id=b.p_id AND b.ip_add='$ip_add' AND b.user_id < 0";
 	}
 	$query = mysqli_query($con,$sql);
 	if (isset($_POST["getCartItem"])) {
@@ -315,6 +317,7 @@ if (isset($_POST["Common"])) {
 				$product_title = $row["product_title"];
 				$product_price = $row["product_price"];
 				$product_image = $row["product_image"];
+				$product_link = $row["product_link"];
 				$cart_item_id = $row["id"];
 				$qty = $row["qty"];
 				$total_price=$total_price+$product_price;
@@ -323,7 +326,7 @@ if (isset($_POST["Common"])) {
                     
                     <div class="product-widget">
 												<div class="product-img">
-													<img src="product_images/'.$product_image.'" alt="">
+													<img src="'.$product_link.'" alt="">
 												</div>
 												<div class="product-body">
 													<h3 class="product-name"><a href="#">'.$product_title.'</a></h3>
@@ -378,6 +381,7 @@ if (isset($_POST["Common"])) {
 					$product_title = $row["product_title"];
 					$product_price = $row["product_price"];
 					$product_image = $row["product_image"];
+					$product_link = $row["product_link"];
 					$cart_item_id = $row["id"];
 					$qty = $row["qty"];
 
@@ -388,7 +392,7 @@ if (isset($_POST["Common"])) {
 							<td data-th="Product" >
 								<div class="row">
 								
-									<div class="col-sm-4 "><img src="product_images/'.$product_image.'" style="height: 70px;width:75px;"/>
+									<div class="col-sm-4 "><img src="'.$product_link.'" style="height: 70px;width:75px;"/>
 									<h4 class="nomargin product-name header-cart-item-name"><a href="product.php?p='.$product_id.'">'.$product_title.'</a></h4>
 									</div>
 								</div>
@@ -443,7 +447,7 @@ if (isset($_POST["Common"])) {
 							<input type="hidden" name="upload" value="1">';
 							  
 							$x=0;
-							$sql = "SELECT a.product_id,a.product_title,a.product_price,a.product_image,b.id,b.qty FROM products a,cart b WHERE a.product_id=b.p_id AND b.user_id='$_SESSION[uid]'";
+							$sql = "SELECT a.product_id,a.product_title,a.product_price,a.product_image,a.product_link,b.id,b.qty FROM products a,cart b WHERE a.product_id=b.p_id AND b.user_id='$_SESSION[uid]'";
 							$query = mysqli_query($con,$sql);
 							while($row=mysqli_fetch_array($query)){
 								$x++;
@@ -489,7 +493,7 @@ if (isset($_POST["removeItemFromCart"])) {
 	if(mysqli_query($con,$sql)){
 		echo "<div class='alert alert-danger'>
 						<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-						<b>Product is removed from cart</b>
+						<b>Đã bỏ sản phẩm khỏi giỏ</b>
 				</div>";
 		exit();
 	}
@@ -508,7 +512,7 @@ if (isset($_POST["updateCartItem"])) {
 	if(mysqli_query($con,$sql)){
 		echo "<div class='alert alert-info'>
 						<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-						<b>Product is updated</b>
+						<b>Sản phẩm được cập nhật</b>
 				</div>";
 		exit();
 	}

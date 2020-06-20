@@ -4,11 +4,11 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:void(0)">Admin</a>
+            <a class="navbar-brand" href="javascript:void(0)"></a>
             
           </div>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="sr-only">Toggle navigation</span>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Chuyển đổi điều hướng">
+            <span class="sr-only">Chuyển đổi điều hướng</span>
             <span class="navbar-toggler-icon icon-bar"></span>
             <span class="navbar-toggler-icon icon-bar"></span>
             <span class="navbar-toggler-icon icon-bar"></span>
@@ -20,7 +20,7 @@
                   <i class="material-icons">person</i>
                   
                   <p class="d-lg-none d-md-block">
-                    Some Actions
+                    Một vài hành động
                   </p>
                 </a>
                 

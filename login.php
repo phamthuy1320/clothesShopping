@@ -3,9 +3,6 @@ include "db.php";
 
 session_start();
 
-#Login script is begin here
-#If user given credential matches successfully with the data available in database then we will echo string login_success
-#login_success string will go back to called Anonymous funtion $("#login").click() 
 
 if(isset($_POST["email"]) && isset($_POST["password"])){
 	$email = mysqli_real_escape_string($con,$_POST["email"]);
@@ -17,9 +14,7 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
 		$_SESSION["uid"] = $row["user_id"];
 		$_SESSION["name"] = $row["first_name"];
 		$ip_add = getenv("REMOTE_ADDR");
-		//we have created a cookie in login_form.php page so if that cookie is available means user is not login
-        
-	//if user record is available in database then $count will be equal to 1
+	
 	if($count == 1){
 		   	
 			if (isset($_COOKIE["product_list"])) {
@@ -55,7 +50,7 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
 				if(!isset($BackToMyPage)) {
 					header('Location: '.$BackToMyPage);
 					echo"<script type='text/javascript'>
-					
+					location.href='store.php';
 					</script>";
 				} else {
 					header('Location: index.php'); // default page

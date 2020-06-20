@@ -7,7 +7,7 @@ $(document).ready(function(){
     producthome();
     
     
-	//cat() is a funtion fetching category record from database whenever page is load
+	//cat() lấy dữ liệu từ bảng category (danh mục) trong CSDL
 	function cat(){
 		$.ajax({
 			url	:	"action.php",
@@ -30,7 +30,7 @@ $(document).ready(function(){
 			}
 		})
 	}
-	//brand() is a funtion fetching brand record from database whenever page is load
+	//brand() lấy dữ liệu từ bảng brand (nhãn hiệu)
 	function brand(){
 		$.ajax({
 			url	:	"action.php",
@@ -41,7 +41,7 @@ $(document).ready(function(){
 			}
 		})
 	}
-	//product() is a funtion fetching product record from database whenever page is load
+	//product() lấy dữ liệu từ bảng products (sản phẩm, giá, hình, danh mục)
 		function product(){
 		$.ajax({
 			url	:	"action.php",
@@ -302,7 +302,7 @@ $(document).ready(function(){
 		$('.total').each(function(){
 			net_total += ($(this).val()-0);
 		})
-		$('.net_total').html("Total : $ " +net_total);
+		$('.net_total').html("Tổng : " +net_total+" VND");
 
 	})
 	//Change Quantity end here 
@@ -384,7 +384,7 @@ $(document).ready(function(){
 		$('.total').each(function(){
 			net_total += ($(this).val()-0);
 		})
-		$('.net_total').html("Total : $ " +net_total);
+		$('.net_total').html("Tổng : " +net_total+" VND");
 	}
 
 	//remove product from cart
@@ -412,25 +412,4 @@ $(document).ready(function(){
 		})
 	})
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

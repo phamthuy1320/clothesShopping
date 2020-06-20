@@ -11,7 +11,7 @@ session_start();
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-		<title>Online Shopping</title>
+		<title>Cloth Shopping</title>
 
 		<!-- Google font -->
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
@@ -53,8 +53,8 @@ session_start();
         }
         #header {
   
-            background: #c2caca;  
-            background: -webkit-linear-gradient(to right, #061161, #c2caca);*/  /* Chrome 10-25, Safari 5.1-6 */
+            background: #f5f7f7;  
+            background: -webkit-linear-gradient(to right, #061161, #f5f7f7);*/  /* Chrome 10-25, Safari 5.1-6 */
            
 
   
@@ -129,7 +129,7 @@ session_start();
                                <div class="dropdownn">
                                   <a href="#" class="dropdownn" data-toggle="modal" data-target="#myModal" ><i class="fa fa-user-o"></i> Chào, '.$row["first_name"].'</a>
                                   <div class="dropdownn-content">
-                                    <a href="" data-toggle="modal" data-target="#profile"><i class="fa fa-user-circle" aria-hidden="true" ></i>Hồ sơ</a>
+                                    
                                     <a href="logout.php"  ><i class="fa fa-sign-in" aria-hidden="true"></i>Đăng xuất</a>
                                     
                                   </div>
@@ -161,15 +161,15 @@ session_start();
 			<!-- MAIN HEADER -->
 			<div id="header">
 				<!-- container -->
-				<div class="container">
+				<div class="container" style="justify-content: space-between;">
 					<!-- row -->
 					<div class="row">
 						<!-- LOGO -->
-						<div class="col-md-3">
+						<div class="col-md-6">
 							<div class="header-logo">
 								<a href="#" class="logo">
 								<font style="font-style:normal; font-size: 38px;color: #795548;font-family: serif">
-                                       <b>Cloth Shopping</b>
+                                       <b>Clothes Shopping</b>
                                     </font>
 									
 								</a>
@@ -178,7 +178,7 @@ session_start();
 						<!-- /LOGO -->
 
 						<!-- ACCOUNT -->
-						<div class="col-md-2 clearfix">
+						<div class="col-md-6 clearfix">
 							<div class="header-ctn">
 								<!-- Cart -->
 								<div class="dropdown">
@@ -205,8 +205,8 @@ session_start();
 								<!-- Menu Toogle -->
 								<div class="menu-toggle">
 									<a href="#">
-										<i class="fa fa-bars"></i>
-										<span>Menu</span>
+										<i class="fa fa-bars" style="color: #2b2d42"></i>
+										<span style="color: #000">Menu</span>
 									</a>
 								</div>
 								<!-- /Menu Toogle -->
@@ -221,7 +221,7 @@ session_start();
 			<!-- /MAIN HEADER -->
 		</header>
 		<!-- /HEADER -->
-		<nav id='navigation'>
+		<nav id='navigation' >
 			<!-- container -->
             <div class="container" id="get_category_home">
                 

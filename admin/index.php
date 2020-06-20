@@ -21,13 +21,13 @@ include "topheader.php";
                 <div class="col-md-14">
             <div class="card ">
               <div class="card-header card-header-primary">
-                <h4 class="card-title"> Users List</h4>
+                <h4 class="card-title"> Danh sách người dùng</h4>
               </div>
               <div class="card-body">
                 <div class="table-responsive ps">
                   <table class="table table-hover tablesorter " id="">
                     <thead class=" text-primary">
-                        <tr><th>ID</th><th>FirstName</th><th>LastName</th><th>Email</th><th>Password</th><th>Contact</th><th>Address</th><th>City</th>
+                        <tr><th>ID</th><th>Tên</th><th>Họ</th><th>Email</th><th>Mật khẩu</th><th>Liên hệ</th><th>Địa chỉ</th><th>Thành phố</th>
                     </tr></thead>
                     <tbody>
                       <?php 
@@ -50,13 +50,13 @@ include "topheader.php";
             <div class="col-md-6">
             <div class="card ">
               <div class="card-header card-header-primary">
-                <h4 class="card-title"> Categories List</h4>
+                <h4 class="card-title"> Danh sách danh mục</h4>
               </div>
               <div class="card-body">
                 <div class="table-responsive ps">
                   <table class="table table-hover tablesorter " id="">
                     <thead class=" text-primary">
-                        <tr><th>ID</th><th>Categories</th><th>Count</th>
+                        <tr><th>ID</th><th>Danh mục</th><th>Số lượng</th>
                     </tr></thead>
                     <tbody>
                       <?php 
@@ -83,13 +83,13 @@ include "topheader.php";
           <div class="col-md-6">
             <div class="card ">
               <div class="card-header card-header-primary">
-                <h4 class="card-title">Brands List</h4>
+                <h4 class="card-title">Danh sách thương hiệu</h4>
               </div>
               <div class="card-body">
                 <div class="table-responsive ps">
                   <table class="table table-hover tablesorter " id="">
                     <thead class=" text-primary">
-                        <tr><th>ID</th><th>Brands</th><th>Count</th>
+                        <tr><th>ID</th><th>Thương hiệu</th><th>Số lượng</th>
                     </tr></thead>
                     <tbody>
                       <?php 
@@ -118,7 +118,7 @@ include "topheader.php";
            <div class="col-md-5">
             <div class="card ">
               <div class="card-header card-header-primary">
-                <h4 class="card-title">Subscribers</h4>
+                <h4 class="card-title">Theo dõi</h4>
               </div>
               <div class="card-body">
                 <div class="table-responsive ps">

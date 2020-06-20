@@ -6,20 +6,12 @@ if(isset($_GET['action']) && $_GET['action']!="" && $_GET['action']=='delete')
 {
 $product_id=$_GET['product_id'];
 ///////picture delete/////////
-$result=mysqli_query($con,"select product_image from products where product_id='$product_id'")
+$result=mysqli_query($con,"select product_link from products where product_id='$product_id'")
 or die("query is incorrect...");
 
-list($picture)=mysqli_fetch_array($result);
-$path="../product_images/$picture";
 
-if(file_exists($path)==true)
-{
-  unlink($path);
-}
-else
-{}
 /*this is delet query*/
-mysqli_query($con,"delete from products where product_id='$product_id'")or die("query is incorrect...");
+mysqli_query($con,"delete from products where product_id=".$product_id)or die("query is incorrect...");
 }
 
 ///pagination
@@ -45,27 +37,27 @@ include "topheader.php";
          <div class="col-md-14">
             <div class="card ">
               <div class="card-header card-header-primary">
-                <h4 class="card-title"> Products List</h4>
+                <h4 class="card-title"> Danh sách sẩn phẩm</h4>
                 
               </div>
               <div class="card-body">
                 <div class="table-responsive ps">
                   <table class="table tablesorter " id="page1">
                     <thead class=" text-primary">
-                      <tr><th>Image</th><th>Name</th><th>Price</th><th>
-	<a class=" btn btn-primary" href="addproduct.php">Add New</a></th></tr></thead>
+                      <tr><th>Ảnh</th><th>Tên</th><th>Giá</th><th>
+	<a class=" btn btn-primary" href="addproduct.php">Thêm Mới</a></th></tr></thead>
                     <tbody>
                       <?php 
 
-                        $result=mysqli_query($con,"select product_id,product_image, product_title,product_price from products  where  product_cat=2 or product_cat=3 or product_cat=4 Limit $page1,12")or die ("query 1 incorrect.....");
+                        $result=mysqli_query($con,"select product_id,product_link,product_image, product_title,product_price from products  where  product_cat=1 or product_cat=2 or product_cat=3 Limit $page1,12")or die ("query 1 incorrect.....");
 
-                        while(list($product_id,$image,$product_name,$price)=mysqli_fetch_array($result))
+                        while(list($product_id,$link,$image,$product_name,$price)=mysqli_fetch_array($result))
                         {
-                        echo "<tr><td><img src='../product_images/$image' style='width:50px; height:50px; border:groove #000'></td><td>$product_name</td>
+                        echo "<tr><td><img src='$link' style='width:50px; height:50px; border:groove #000'></td><td>$product_name</td>
                         <td>$price</td>
                         <td>
 
-                        <a class=' btn btn-success' href='clothes_list.php?product_id=$product_id&action=delete'>Delete</a>
+                        <a class=' btn btn-success' href='productlist.php?product_id=$product_id&action=delete'>Xóa</a>
                         </td></tr>";
                         }
 
@@ -75,18 +67,18 @@ include "topheader.php";
                 <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
               </div>
             </div>
-            <nav aria-label="Page navigation example">
+            <nav aria-label="Ví dụ trang điều hướng">
               <ul class="pagination">
                 <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Previous">
+                  <a class="page-link" href="#" aria-label="Lùi">
                     <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
+                    <span class="sr-only">Lùi</span>
                   </a>
                 </li>
                  <?php 
 //counting paging
 
-                $paging=mysqli_query($con,"select product_id,product_image, product_title,product_price from products");
+                $paging=mysqli_query($con,"select product_id,product_link,product_image, product_title,product_price from products");
                 $count=mysqli_num_rows($paging);
 
                 $a=$count/10;
@@ -100,9 +92,9 @@ include "topheader.php";
 }
 ?>
                 <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Next">
+                  <a class="page-link" href="#" aria-label="Tới">
                     <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
+                    <span class="sr-only">Tới</span>
                   </a>
                 </li>
               </ul>

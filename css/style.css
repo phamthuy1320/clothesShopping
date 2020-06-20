@@ -10,7 +10,8 @@
 body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
-  background-color: #e0dbdb;
+  
+  background-color: #38363445;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -545,7 +546,7 @@ background: linear-gradient(to bottom, #9E9E9E, #607D8B); /* W3C, IE 10+/ Edge, 
 .cart-dropdown {
   position: absolute;
   width: 300px;
-  background: #795548;
+  background: #ffffff;
   padding: 15px;
   -webkit-box-shadow: 0px 0px 0px 2px #E4E7ED;
   box-shadow: 0px 0px 0px 2px #E4E7ED;
@@ -594,7 +595,7 @@ background: linear-gradient(to bottom, #9E9E9E, #607D8B); /* W3C, IE 10+/ Edge, 
   width: calc(50% - 0px);
   padding: 12px;
   background-color: #D10024;
-  color: #795548;
+  color: #fff;
   text-align: center;
   font-weight: 700;
   -webkit-transition: 0.2s all;
@@ -810,7 +811,7 @@ background: linear-gradient(to bottom, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10
   padding: 60px 0px;
   margin: 30px 0px;
   background-color: #E4E7ED;
-  background-image: url('../img/hotdeal.png');
+ 
   background-position: center;
   background-repeat: no-repeat;
 }

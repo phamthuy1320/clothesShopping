@@ -51,12 +51,7 @@
                                        <input class="primary-btn btn-block"  value="Đăng Ký" type="submit" name="signup_button">
                                     </div>
                                 </form>
-                                    <div class="text-pad">
-                                    <a href="" data-toggle="modal" data-target="#Modal_login">Bạn đã có tài khoảng ? Đăng nhập</a>
-                                       
-                                    </div>
-                                    
-                                
+                                   
 								
                                 <div class="login-marg">
 						<!-- Billing Details -->

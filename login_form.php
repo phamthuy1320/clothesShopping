@@ -12,7 +12,7 @@ if (isset($_POST["login_user_with_product"])) {
 
 }
 ?>
-
+<!--Form đăng nhập-->
 	<div class="wait overlay">
 		<div class="loader"></div>
 	</div>
@@ -50,15 +50,10 @@ if (isset($_POST["login_user_with_product"])) {
                                        </a>
                                         
                                     </div>
-                                    
-                                        <input class="primary-btn btn-block"   type="submit"  Value="Login">
-                                        
-                                        <div class="panel-footer"><div class="alert alert-danger"><h4 id="e_msg"></h4></div></div>
-                                    
-                                    	
-                                        
-                                    
-
+                                       <div class="form-group">
+                                        <input class="primary-btn btn-block"   type="submit"  Value="Đăng nhập">
+                                        </div>
+                                       
                                 </div>
                                 
 								</form>

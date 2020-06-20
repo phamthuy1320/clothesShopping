@@ -34,13 +34,13 @@ include "topheader.php";
           <div class="col-md-14">
             <div class="card ">
               <div class="card-header card-header-primary">
-                <h4 class="card-title">Orders  / Page <?php echo $page;?> </h4>
+                <h4 class="card-title">Đặt hàng  / Trang <?php echo $page;?> </h4>
               </div>
               <div class="card-body">
                 <div class="table-responsive ps">
                   <table class="table table-hover tablesorter " id="">
                     <thead class=" text-primary">
-                      <tr><th>Customer Name</th><th>Products</th><th>Contact | Email</th><th>Address</th><th>Details</th><th>Shipping</th><th>Time</th>
+                      <tr><th>Tên khách hàng</th><th>Sản phẩm</th><th>Liên hệ | Email</th><th>Địa chỉ</th><th>Mô tả</th><th>Giao hàng</th><th>Thời gian</th>
                     </tr></thead>
                     <tbody>
                       <?php 
@@ -51,7 +51,7 @@ include "topheader.php";
                         echo "<tr><td>$cus_name</td><td>$p_names</td><td>$email<br>$contact_no</td><td>$address<br>ZIP: $zip_code<br>$country</td><td>$details</td><td>$quantity</td><td>$time</td>
 
                         <td>
-                        <a class=' btn btn-danger' href='orders.php?order_id=$order_id&action=delete'>Delete</a>
+                        <a class=' btn btn-danger' href='orders.php?order_id=$order_id&action=delete'>Xóa</a>
                         </td></tr>";
                         }
                         ?>

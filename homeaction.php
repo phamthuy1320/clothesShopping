@@ -4,9 +4,10 @@ $ip_add = getenv("REMOTE_ADDR");
 include "db.php";
 
 if(isset($_POST["categoryhome"])){
-	$category_query = "SELECT * FROM categories Where cat_id!=1";
+	$category_query = "SELECT * FROM categories";
     
 	$run_query = mysqli_query($con,$category_query) or die(mysqli_error($con));
+
 	echo "
 		
             
@@ -16,9 +17,9 @@ if(isset($_POST["categoryhome"])){
 					<!-- NAV -->
 					<ul class='main-nav nav navbar-nav'>
 					<li class='active'><a href='index.php'><b>Trang chủ</b></a></li>
-					<li><a href='store.php'><b>Quần áo nữ</b></a></li>
+					<li><a href='store.php'><b>Sản phẩm</b></a></li>
 	";
-	
+	/*
 		while($row = mysqli_fetch_array($run_query)){
 			$cid = $row["cat_id"];
 			$cat_name = $row["cat_title"];
@@ -27,9 +28,12 @@ if(isset($_POST["categoryhome"])){
             $query = mysqli_query($con,$sql);
             $row = mysqli_fetch_array($query);
             $count=$row["count_items"];
-			echo "<li class='categoryhome' cid='$cid'><a href='store.php'><b>$cat_name</b></a></li>";
+            if($cid!=1){
+            	echo "<li class='categoryhome' cid='$cid'><a href='store.php'><b>$cat_name</b></a></li>";
+            }
+			
 		}
-        
+        */
 		echo "</ul>
 					<!-- /NAV -->
 				</div>
@@ -67,6 +71,7 @@ if(isset($_POST["getProducthome"])){
 			$pro_title = $row['product_title'];
 			$pro_price = $row['product_price'];
 			$pro_image = $row['product_image'];
+			$pro_link = $row['product_link'];
             
             $cat_name = $row["cat_title"];
 			echo "
@@ -74,12 +79,12 @@ if(isset($_POST["getProducthome"])){
                        <div class='product-widget'>
                                 <a href='product.php?p=$pro_id'> 
 									<div class='product-img'>
-										<img src='product_images/$pro_image' alt=''>
+										<img src='$pro_link' alt=''>
 									</div>
 									<div class='product-body'>
 										<p class='product-category'>$cat_name</p>
-										<h3 class='product-name'><a href='product.php?p=$pro_id'>$pro_title</a></h3>
-										<h4 class='product-price'>$pro_price<del class='product-old-price'>990.000 VND</del></h4>
+										<h3 class='product-name'><a href='product.php?p=$pro_id'>$pro_title  </a></h3>
+										<h4 class='product-price'>$pro_price VND<del class='product-old-price'>".($pro_price*1.3)." VND</del></h4>
 									</div></a>
 								</div>
                         
@@ -98,7 +103,7 @@ if(isset($_POST["gethomeProduct"])){
 		$start = 0;
 	}
     
-	$product_query = "SELECT * FROM products,categories WHERE product_cat=cat_id AND product_id BETWEEN 71 AND 74";
+	$product_query = "SELECT * FROM products,categories WHERE product_cat=cat_id";
 	$run_query = mysqli_query($con,$product_query);
 	if(mysqli_num_rows($run_query) > 0){
         
@@ -109,6 +114,7 @@ if(isset($_POST["gethomeProduct"])){
 			$pro_title = $row['product_title'];
 			$pro_price = $row['product_price'];
 			$pro_image = $row['product_image'];
+			$pro_link = $row['product_link'];
             
             $cat_name = $row["cat_title"];
             
@@ -118,7 +124,7 @@ if(isset($_POST["gethomeProduct"])){
 			<div class='col-md-4 col-xs-6'>
 			<a href='product.php?p=$pro_id'><div class='product'>
 				<div class='product-img'>
-					<img  src='product_images/$pro_image' style='max-height: 170px;' alt=''>
+					<img  src='$pro_link' style='max-height: 170px;' alt=''>
 					<div class='product-label'>
 						<span class='sale'>-30%</span>
 						<span class='new'>MỚI</span>
@@ -127,7 +133,7 @@ if(isset($_POST["gethomeProduct"])){
 				<div class='product-body'>
 					<p class='product-category'>$cat_name</p>
 					<h3 class='product-name header-cart-item-name'><a href='product.php?p=$pro_id'>$pro_title</a></h3>
-					<h4 class='product-price header-cart-item-info'>$pro_price<del class='product-old-price'>990.000 VND</del></h4>
+					<h4 class='product-price header-cart-item-info'>$pro_price VND<del class='product-old-price'>".($pro_price*1.3)." VND</del></h4>
 					<div class='product-rating'>
 						<i class='fa fa-star'></i>
 						<i class='fa fa-star'></i>
@@ -152,6 +158,7 @@ if(isset($_POST["gethomeProduct"])){
     
 	}
     
+ //Đã bỏ
 if(isset($_POST["get_seleted_Category"]) ||  isset($_POST["search"])){
 	if(isset($_POST["get_seleted_Category"])){
 		$id = $_POST["cat_id"];
@@ -169,6 +176,7 @@ if(isset($_POST["get_seleted_Category"]) ||  isset($_POST["search"])){
 			$pro_title = $row['product_title'];
 			$pro_price = $row['product_price'];
 			$pro_image = $row['product_image'];
+			$pro_link = $row['product_link'];
             $cat_name = $row["cat_title"];
 			echo "
 					
@@ -176,7 +184,7 @@ if(isset($_POST["get_seleted_Category"]) ||  isset($_POST["search"])){
                         <div class='col-md-4 col-xs-6'>
 								<a href='product.php?p=$pro_id'><div class='product'>
 									<div class='product-img'>
-										<img  src='product_images/$pro_image' style='max-height: 170px;' alt=''>
+										<img  src='$pro_link' style='max-height: 170px;' alt=''>
 										<div class='product-label'>
 											<span class='sale'>-30%</span>
 											<span class='new'>MỚI</span>
@@ -185,7 +193,7 @@ if(isset($_POST["get_seleted_Category"]) ||  isset($_POST["search"])){
 									<div class='product-body'>
 										<p class='product-category'>$cat_name</p>
 										<h3 class='product-name header-cart-item-name'><a href='product.php?p=$pro_id'>$pro_title</a></h3>
-										<h4 class='product-price header-cart-item-info'>$pro_price<del class='product-old-price'>990.000 VND</del></h4>
+										<h4 class='product-price header-cart-item-info'>$pro_price VND<del class='product-old-price'>".($pro_price*1.3)." VND</del></h4>
 										<div class='product-rating'>
 											<i class='fa fa-star'></i>
 											<i class='fa fa-star'></i>
